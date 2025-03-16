@@ -14,7 +14,7 @@ public class Wordle {
         int counter = 7;
         boolean dupChar = false;
 
-        System.out.println("WORDLE! ");
+        System.out.println("WORDLE!! ");
 
         String [] correctWords = {"GRAPE", "RADIO", "TIMER", "RIVER", "CLOUD"};
         String correct = correctWords[x];
