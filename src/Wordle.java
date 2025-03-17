@@ -1,5 +1,5 @@
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Wordle {
 
@@ -18,14 +18,15 @@ public class Wordle {
 
         String [] correctWords = {"GRAPE", "RADIO", "TIMER", "RIVER", "CLOUD"};
         String correct = correctWords[x];
-        String guess = "PURGE";
+        //String correct = "CARRY";
+        String guess = "";
 
         System.out.print("Guess the five letter word: ");
         Scanner in = new Scanner(System.in);
         guess = in.nextLine().toUpperCase().replace(" ", "");
 
         while(counter > 0){
-
+            dupChar = false;
             while(guess.length() < correct.length()){
                 System.out.println("Longer guess required");
                 guess = in.nextLine().toUpperCase().replace(" ", "");
@@ -36,9 +37,9 @@ public class Wordle {
                     System.out.print(BG_GREEN + guess.substring(i, i+1) + BG_RESET);
 
                 } else if (correct.contains(guess.substring(i, i+1))) {
-                    for (int j = 0; j < 5; j++){
-                        if(correct.substring(i, i+1).equals(guess.substring(j, j+1)));
-                            System.out.print(BG_RESET + guess.substring(i, i+1) + BG_RESET);
+                    for (int j = i; j < 5; j++){
+                        if(guess.substring(j, j+1).equals(correct.substring(i, i+1)));
+                            System.out.print(BG_YELLOW + guess.substring(i, i+1) + BG_RESET);
                             dupChar = true;
                             break;
                     }
@@ -46,7 +47,7 @@ public class Wordle {
                     if(dupChar = true){
                         continue;
                     }
-                    System.out.print(BG_YELLOW + guess.substring(i, i+1) + BG_RESET);
+                    System.out.print(BG_RESET + guess.substring(i, i+1) + BG_RESET);
 
                 } else {
                     System.out.print(guess.substring(i, i+1));
